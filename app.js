@@ -12,7 +12,14 @@ console.log(`Command: ${command}`);
 
 if(command === 'add') {
 
-  notes.addNote(argv.title, argv.body)
+  var note = notes.addNote(argv.title, argv.body)
+
+  try {
+    console.log(`Tile: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+  } catch(e) {
+    console.log("Title already exist's");
+  }
 
 } else if (command === 'list') {
 
