@@ -15,8 +15,7 @@ if(command === 'add') {
   var note = notes.addNote(argv.title, argv.body)
 
   try {
-    console.log(`Tile: ${note.title}`);
-    console.log(`Body: ${note.body}`);
+    notes.printNote(note)
   } catch(e) {
     console.log("Title already exist's");
   }
@@ -27,7 +26,13 @@ if(command === 'add') {
 
 } else if (command === 'read') {
 
-  notes.getNote(argv.title)
+  note = notes.getNote(argv.title)
+
+  if(note) {
+    notes.printNote(note)
+  } else {
+    console.log('Note not found');
+  }
 
 } else if (command === 'remove') {
 
